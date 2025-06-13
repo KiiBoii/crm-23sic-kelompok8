@@ -4,6 +4,7 @@ import MainLayout from "./components/MainLayout"
 import Dashboard from "./pages/Dashboard"
 import Login from "./pages/Login"
 import Unauthorized from "./pages/401"
+import Signup from "./pages/Signup"
 
 import Product from "./pages/Produk"
 import ProductAntibacterial from "./pages/ProdukAntibacterial"
@@ -17,6 +18,9 @@ import Delivery from "./pages/Delivery"
 function App() {
   return (
     <Routes>
+      {/* Login (tanpa layout) */}
+      <Route path="/" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
       {/* Layout utama untuk semua halaman setelah login */}
       <Route element={<MainLayout />}>
         {/* Halaman tidak punya akses */}
@@ -39,8 +43,7 @@ function App() {
         <Route path="/delivery" element={<Delivery />} />
       </Route>
 
-      {/* Login (tanpa layout) */}
-      <Route path="/" element={<Login />} />
+      
     </Routes>
   )
 }

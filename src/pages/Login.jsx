@@ -7,17 +7,14 @@ export default function Login() {
     const [password, setPassword] = useState("");
 
     function handleLogin() {
-        // Simulasi login sederhana
-        if (username === "admin" && password === "admin") {
-            // Simpan status login dan role (simulasi)
-            localStorage.setItem("isAuthenticated", "true");
-            localStorage.setItem("role", "admin");
+        const user = JSON.parse(localStorage.getItem("user"));
 
+        if (username === user?.username && password === user?.password) {
+            localStorage.setItem("isAuthenticated", "true");
             navigate("/dashboard");
         } else {
-            // Simulasi akun tidak memiliki akses
             navigate("/401");
-        }
+}
     }
 
     return (
@@ -60,6 +57,9 @@ export default function Login() {
                         >
                             Login
                         </button>
+                        <p className="text-sm text-center mt-4">
+                            Belum punya akun? <a href="/signup" className="text-blue-600 hover:underline">Daftar</a>
+                        </p>
                     </div>
                 </form>
             </div>
